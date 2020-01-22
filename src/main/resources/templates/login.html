@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Login | User Management App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+</head>
+
+<body style="background-color: whitesmoke;">
+
+<div class="container-fluid" style="margin-top: 160px;">
+  <div class="row">
+    <div class="col-8 mx-auto align-items-center" style="max-width: 300px;">
+
+      <!--  Place for messages: error, alert etc ...    -->
+      <div class="form-group">
+        <div class="col-xs-15">
+
+          <!-- Check for login error -->
+          <div th:if="${param.error}">
+            <div class="alert alert-danger col-xs-offset-1 col-xs-10">
+              Invalid username and/or password!
+            </div>
+          </div>
+
+          <!-- Logout message -->
+          <div th:if="${param.logout}">
+            <div class="alert alert-success col-xs-offset-1 col-xs-10">
+              You have been logged out.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <form th:action="@{/login}" method="POST" class="form-signin">
+        <h3 class="form-signin-heading">Please sign in</h3>
+        <!--  Login      -->
+        <label for="inputName" class="sr-only">Enter login</label>
+        <input type="text" id="inputName" class="form-control" placeholder="Username" name="username" required autofocus>
+        <!--  Password      -->
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required style="margin-bottom: 10px">
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top: 10px">Sign in</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

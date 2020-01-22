@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+
+
+<div th:fragment="auth-info">
+  <b>Your account details:</b><br>
+  <!--Logged user: <span th:utext="${#request.userPrincipal.name}"></span><br>
+  Roles: <span th:utext="${#request.userPrincipal.authorities}"></span><br>-->
+  Username:
+  <b sec:authentication="name"></b><br>
+  <!--  <b sec:authentication="password"></b><br>-->
+  Roles:
+  <!--  <b sec:authentication="principal.authorities"></b>-->
+  <th:block th:each="r, iter:${#authentication.getAuthorities()}">
+    <b th:text="${r.getAuthority()}"></b>
+    <th:block th:if="${!iter.last}">, </th:block>
+  </th:block>
+
+
+</div>
+<div th:fragment="logout">
+  <form class="form-inline" th:action="@{/logout}" method="post">
+    <button class="btn btn-outline-success" type="submit">Sign out</button>
+  </form>
+</div>
+
+
