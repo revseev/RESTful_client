@@ -38,9 +38,19 @@ public class UserServiceRest implements UserService {
     }
 
     @Override
+    public void updateUser(User user){
+//        String userId = String.valueOf(user.getId());
+        restTemplate.put(
+                serverUrl + "/users"/* + userId*/,
+                new HttpEntity<>(user),
+                User.class);
+    }
+
+    @Override
     public User findById(long id) {
+        String userId = String.valueOf(id);
         return restTemplate.exchange(
-                serverUrl + "/users/" + String.valueOf(id),
+                serverUrl + "/users/" + userId,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<User>() {

@@ -35,7 +35,7 @@ public class UserRestController {
 
     @PutMapping(value = "users", produces = MediaType.APPLICATION_JSON_VALUE)
     public User updateUser(@RequestBody User user){
-        userService.saveUser(user);
+        userService.updateUser(user);
         return user;
     }
 
