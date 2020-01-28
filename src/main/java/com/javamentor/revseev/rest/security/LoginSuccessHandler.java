@@ -42,10 +42,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
             }
         }
 
-        if (isUser) {
-            return "/";
-        } else if (isAdmin) {
+        if (isAdmin ) {
             return "/list";
+        } else if (isUser) {
+            return "/";
         } else {
             throw new IllegalStateException();
         }
