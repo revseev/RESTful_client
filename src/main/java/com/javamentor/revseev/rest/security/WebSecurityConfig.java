@@ -35,7 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/","/login")
+                /*.antMatchers("/login", "/oauth2")
+                .permitAll()*/
+                .antMatchers("/")
                 .hasAnyAuthority("USER", "ADMIN")
                 .antMatchers("/list","/new","/save","/delete","/edit","/api/**")
                 .hasAuthority("ADMIN");
@@ -50,6 +52,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Указываем параметры логина и пароля с формы логина
                 .usernameParameter("username").passwordParameter("password")
                 // даем доступ к форме логина всем
+                .permitAll();
+
+
+        http.oauth2Login()
+                .loginPage("/login")
                 .permitAll();
 
         http.csrf()
@@ -75,6 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
         return new LoginSuccessHandler();
     }
+
 
 /*     //для разработки
    @Override
