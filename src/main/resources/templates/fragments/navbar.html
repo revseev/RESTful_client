@@ -16,7 +16,7 @@
 
       <div class="form-inline ml-auto">
         <div class="navbar-text mr-3">
-          Hello, <span sec:authentication="name"></span>!
+                    Hello, <span id="principle-info"></span><span id="local-user-info" sec:authentication="name"></span>!
         </div>
         <div th:insert="~{/fragments/logout :: logout}"></div>
       </div>

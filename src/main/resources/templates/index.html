@@ -40,7 +40,7 @@
       <h2 class="mt-4 mb-5">Welcome to User Management App!</h2>
 
       <div class="">
-        <p>Hello, <span sec:authentication="name"></span>!</p>
+        <p>Hello, <span id="principle-info2"></span><span id="local-user-info2" sec:authentication="name"></span>!</p>
         <p th:insert="~{/fragments/logout :: auth-info}"></p>
       </div>
     </div>
@@ -60,5 +60,15 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+<!--getting Principal-->
+<script type="text/javascript">
+    $.get("/user", function(data) {
+        if (data.name != null) {
+            $("#principle-info").html(data.name);
+            $("#local-user-info").hide();
+            $("#principle-info2").html(data.name);
+            $("#local-user-info2").hide()
+            // $(".authenticated").show()
+        }});
 </body>
 </html>

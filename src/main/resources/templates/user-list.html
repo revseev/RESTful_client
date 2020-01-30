@@ -194,6 +194,14 @@
         crossorigin="anonymous"></script>
 <!--Custom JS -->
 <script src="js/scripts.js"></script>
+<!--getting Principal-->
+<script type="text/javascript">
+    $.get("/user", function(data) {
+        $("#principle-info").html(data.name);
+        // $(".unauthenticated").hide()
+        // $(".authenticated").show()
+    });
+</script>
 
 
 </body>

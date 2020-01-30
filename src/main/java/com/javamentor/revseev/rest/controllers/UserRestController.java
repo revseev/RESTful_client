@@ -4,9 +4,13 @@ import com.javamentor.revseev.rest.model.User;
 import com.javamentor.revseev.rest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -43,6 +47,5 @@ public class UserRestController {
     public void deleteUser(@PathVariable String id) {
         userService.deleteUser(Long.parseLong(id));
     }
-
 
 }
