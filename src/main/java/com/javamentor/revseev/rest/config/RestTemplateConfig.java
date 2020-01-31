@@ -15,8 +15,4 @@ public class RestTemplateConfig {
 //                .setReadTimeout(Duration.ofSeconds(3))
                 .build();
     }
-/*    @Bean
-    public RestTemplate getRestTemplate(RestTemplateBuilder restTemplateBuilder) {
-        return restTemplateBuilder.basicAuthentication("admin", "admin").build();
-    }*/
 }
