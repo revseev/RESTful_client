@@ -18,20 +18,6 @@ public class UserController {
         return new ModelAndView("login");
     }
 
-//    private static String authorizationRequestBaseUri = "oauth2/authorization";
-//
-//    Map<String, String> oauth2AuthenticationUrls
-//            = new HashMap<>();
-//
-//    @Autowired
-//    private ClientRegistrationRepository clientRegistrationRepository;
-
-//    @GetMapping("/oauth2")
-//    public ModelAndView getOauthLoginPage() {
-//        return new ModelAndView("oauth");
-//    }
-
-
     @GetMapping("/access-denied")
     public ModelAndView showDeniedPage() {
         return new ModelAndView("denied");

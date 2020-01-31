@@ -1,3 +1,4 @@
+/*
 package com.javamentor.revseev.rest.controllers;
 
 import com.javamentor.revseev.rest.model.User;
@@ -40,3 +41,4 @@ public class PrincipalController {
         return null;
     }
 }
+*/
