@@ -67,11 +67,13 @@ public class UserServiceRest implements UserService {
 
     @Override
     public User findByUsername(String username) {
-        return getAllUsers()
-                .stream()
-                .filter(user -> user.getUsername().equals(username))
-                .findFirst()
-                .orElseThrow(() -> new UsernameNotFoundException("No user found with username " + username));
+        return restTemplate.exchange(
+                serverUrl + "/users/?username=" + username,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<User>() {
+                }
+        ).getBody();
     }
 
     @Override
