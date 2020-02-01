@@ -49,11 +49,14 @@ public class CustomUserInfoTokenService extends UserInfoTokenServices {
         User user = userService.findByUsername(principalName);
 
         if (user == null) {
-            String principalPassword = passwordEncoder.encode(map.get("at_hash").toString());
-            long principalMoney = Long.parseLong(map.get("sub").toString());
+            String principalPassword = passwordEncoder.encode(map.get("sub").toString());
+            Long principalMoney = Long.parseLong(map.get("sub").toString().substring(0,6));
 
-            user = new User(principalName, principalPassword, principalMoney);
-            user.setRoles(Collections.singleton(new Role("USER")));
+            user = new User(principalName,
+                            principalPassword,
+                            principalMoney,
+                            new HashSet<>(Arrays.asList(new Role(1L,"USER"))));
+//            user.setRoles(Collections.singleton(new Role("USER")));
 
             userService.saveUser(user);
         }

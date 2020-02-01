@@ -1,5 +1,6 @@
 package com.javamentor.revseev.rest.security;
 
+import com.javamentor.revseev.rest.model.User;
 import com.javamentor.revseev.rest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,11 +10,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
@@ -123,7 +126,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return googleFilter;
     }
 
-
     @Bean
     @ConfigurationProperties("security.oauth2.client")
     public AuthorizationCodeResourceDetails google() {
@@ -135,23 +137,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @ConfigurationProperties("security.oauth2.resource")
     public ResourceServerProperties googleResource() {
         return new ResourceServerProperties();
-    }
-
-    @Bean
-    public PrincipalExtractor principalExtractor(UserService userService) {
-        return map -> {
-            // распечатываем все поля principal
-            map.forEach((e, v) -> {
-                System.out.println(e + " ::: " + v);
-            });
-            // достаем из БД роль USER и записываем ее в текущего principal (НО ЗАЧЕМ?)
-//            User user = userService.findByUsername("u");
-//            System.out.println(user.getRoles());
-//
-//            SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, "", user.getAuthorities()));
-//            return user;
-            return map;
-        };
     }
 }
 
