@@ -76,15 +76,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
 
         http.formLogin()
-                // указываем страницу с формой логина
-                .loginPage("/login")
-                //указываем логику обработки при логине
-                .successHandler(myAuthenticationSuccessHandler())
-                // указываем action с формы логина
-                .loginProcessingUrl("/login")
-                // Указываем параметры логина и пароля с формы логина
-                .usernameParameter("username").passwordParameter("password")
-                // даем доступ к форме логина всем
+                .loginPage("/login")// указываем страницу с формой логина
+//                .successHandler(myAuthenticationSuccessHandler()) //указываем логику обработки при логине (работает только для логина через форму)
+                .loginProcessingUrl("/login") // указываем action с формы логина
+                .usernameParameter("username").passwordParameter("password")// Указываем параметры логина и пароля с формы логина
                 .permitAll();
 
         http.logout()

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collection;
 
+// не используется для OAuth2
 @Component
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
