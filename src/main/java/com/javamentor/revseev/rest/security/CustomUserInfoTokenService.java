@@ -56,11 +56,9 @@ public class CustomUserInfoTokenService extends UserInfoTokenServices {
                             principalPassword,
                             principalMoney,
                             new HashSet<>(Arrays.asList(new Role(1L,"USER"))));
-//            user.setRoles(Collections.singleton(new Role("USER")));
-
             userService.saveUser(user);
         }
-        // формирование
+        // формирование  OAuth2Authentication
         Authentication authentication = new UsernamePasswordAuthenticationToken(user, "", user.getAuthorities());
         OAuth2Request request = new OAuth2Request(null, accessToken, null, true, null,
                 null, null, null, null);
