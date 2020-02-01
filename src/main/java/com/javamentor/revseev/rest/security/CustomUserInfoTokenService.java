@@ -32,6 +32,13 @@ public class CustomUserInfoTokenService extends UserInfoTokenServices {
         this.userInfoEndpointUrl = userInfoEndpointUrl;
         this.clientId = clientId;
     }
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public OAuth2Authentication loadAuthentication(String accessToken) throws AuthenticationException, InvalidTokenException {
