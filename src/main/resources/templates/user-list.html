@@ -31,7 +31,7 @@
       <div sec:authorize="hasAuthority('ADMIN')">
         <a th:href="@{/list}" class="list-group-item list-group-item-action bg-light">Admin</a>
       </div>
-      <a th:href="@{/}" class="list-group-item list-group-item-action bg-light">User</a>
+      <a th:href="@{/user}" class="list-group-item list-group-item-action bg-light">User</a>
     </div>
   </div>
   <!-- /#sidebar-wrapper -->
@@ -195,13 +195,13 @@
 <!--Custom JS -->
 <script src="js/scripts.js"></script>
 <!--getting Principal-->
-<script type="text/javascript">
+<!--<script type="text/javascript">
     $.get("/user", function(data) {
         $("#principle-info").html(data.name);
         // $(".unauthenticated").hide()
         // $(".authenticated").show()
     });
-</script>
+</script>-->
 
 
 </body>

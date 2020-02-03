@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collection;
 
-// не используется для OAuth2
+/*
+// не используется для OAuth2*/
 @Component
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -46,7 +47,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         if (isAdmin ) {
             return "/list";
         } else if (isUser) {
-            return "/";
+            return "/user";
         } else {
             throw new IllegalStateException();
         }

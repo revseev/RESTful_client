@@ -30,6 +30,11 @@ public class ViewController {
         return new ModelAndView("user-list");
     }
 
+    @GetMapping("/user")
+    public ModelAndView showUserPage() {
+        return new ModelAndView("index");
+    }
+
     @GetMapping("/")
     public String index() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -41,7 +46,7 @@ public class ViewController {
             if (roleNAme.contains("ADMIN")) {
                 return "redirect:/list";
             } else
-                return "index";
+                return "redirect:/user";
         }
         return "redirect:/login";
     }
