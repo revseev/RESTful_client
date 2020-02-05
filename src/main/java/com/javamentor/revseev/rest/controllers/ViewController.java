@@ -25,7 +25,7 @@ public class ViewController {
         return new ModelAndView("denied");
     }
 
-    @GetMapping(value = "/list")
+    @GetMapping("/list")
     public ModelAndView toList() {
         return new ModelAndView("user-list");
     }

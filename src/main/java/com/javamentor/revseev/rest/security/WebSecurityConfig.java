@@ -70,7 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().disable();
 
         http.authorizeRequests()
-//                .antMatchers("/login").permitAll() //not necessary
+                .antMatchers("/login/scribe-google", "/auth/google").permitAll() //not necessary
                 .antMatchers("/").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers("/list", "/api/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated();
