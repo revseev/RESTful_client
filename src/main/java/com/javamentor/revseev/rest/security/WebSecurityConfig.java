@@ -8,6 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -33,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     @Qualifier("myUserDetailsService")
-    UserDetailsService userDetailsService;
+    public UserDetailsService userDetailsService;
 
     @Autowired
     @Qualifier("noOpPasswordEncoder")
@@ -41,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     @Qualifier("oauth2ClientContext")
-    OAuth2ClientContext oAuth2ClientContext;
+    public OAuth2ClientContext oAuth2ClientContext;
 
     @Autowired
     UserService userService;
@@ -56,6 +57,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
         return new LoginSuccessHandler();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     @Override
@@ -114,6 +121,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         tokenService.setRestTemplate(googleRestTemplate);
         tokenService.setUserService(userService);
         tokenService.setPasswordEncoder(passwordEncoder);
+
         googleFilter.setTokenServices(tokenService);
         return googleFilter;
     }

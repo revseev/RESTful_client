@@ -3,6 +3,7 @@ package com.javamentor.revseev.rest.service;
 import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.oauth.OAuth20Service;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -14,7 +15,7 @@ public class GoogleService {
 
     private OAuth20Service service;
     private static final String API_KEY = "210621414596-rvolaltbic5baj5jmgq0lngmlfkjkiob.apps.googleusercontent.com";
-    private static final String API_SECRET = "xZ6NwPIIZhcNraUF-kZGOh3b";
+    private static final String API_SECRET = "API_SECRET";
     private static final String SCOPE = "profile email";
     private static final String CALLBACK = "http://localhost:8080/auth/google";
 
